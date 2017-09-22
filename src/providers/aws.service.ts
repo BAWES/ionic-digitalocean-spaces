@@ -7,9 +7,9 @@ declare var AWS;
 
 @Injectable()
 export class AwsService {
-    private _region = "eu-west-2"; //London
-    private _access_key_id = "AKIAI5ZFAKH7R3WIHWXQ";
-    private _secret_access_key = "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";
+    private _endpoint = "nyc3.digitaloceanspaces.com";
+    private _access_key_id = "57PWA74XEUIHULJO3QZD";
+    private _secret_access_key = "/kT4RN7Y6m3byGKG4w/yHtc1jXwkdO1+5DDqAGbjlCM";
     private _bucket_name = "bawes-public";
 
     constructor(private _file: NativeFile){
@@ -20,7 +20,7 @@ export class AwsService {
      * Initialize the AWS Service
      */
     initAwsService(){
-        AWS.config.region = this._region;
+        // AWS.config.region = this._region;
         AWS.config.accessKeyId = this._access_key_id;
         AWS.config.secretAccessKey = this._secret_access_key;
     }
@@ -79,8 +79,12 @@ export class AwsService {
      * @returns {Observable<any>}
      */
     uploadFile(file_prefix: string, file: File): Observable<any> {
+        let EP = new AWS.Endpoint(this._endpoint);
         let s3 = new AWS.S3({
-            apiVersion: '2006-03-01'
+            // accessKeyId: this._access_key_id,
+            // secretAccessKey: this._secret_access_key,
+            endpoint: EP,
+            signatureVersion: 'v4'
         });
 
         let params = {

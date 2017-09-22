@@ -12,7 +12,7 @@ import { CameraService } from '../../providers/camera.service';
 export class HomePage {
   @ViewChild('fileInput') fileInput:ElementRef;
 
-  public bucketUrl = "https://bawes-public.s3.eu-west-2.amazonaws.com/"; // Used for link generation after upload
+  public bucketUrl = "https://bawes-public.nyc3.digitaloceanspaces.com/"; // Used for link generation after upload
   public uploads = []; // List of uploads to display in this app
 
   constructor(
