@@ -1,26 +1,10 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# Upload from Ionic directly to DigitalOcean Spaces via AWS JS SDK
 
-## How to use this template
+## Status: Not yet functional
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+## Ideal Use Case
+Upload directly into spaces, then pass the file url to our backend to move to a permanent "bucket" / space.
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
-
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
-```
-
-Then, to run it, cd into `myBlank` and run:
-
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
-
+## Issues:
+* CORS configuration on DigitalOcean Spaces doesn't allow for upload from browser
+* API Key/Secret doesn't seem to be specific to a single bucket/space. This means that even if we do manage to get the upload working, we won't be able to move the file to a secret location later.
